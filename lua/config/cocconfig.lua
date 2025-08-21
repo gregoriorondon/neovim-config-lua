@@ -178,3 +178,73 @@ keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
 keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
 -- Resume latest coc list
 keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
+
+
+
+
+
+
+
+-- Configurar vim-blade para resaltado y detección de archivos
+vim.cmd[[
+  au BufRead,BufNewFile *.blade.php set filetype=blade
+]]
+
+-- Instalar coc-emmet (si no está instalado)
+vim.g.coc_global_extensions = {
+  'coc-emmet'
+}
+
+-- Asignar Blade como "lenguaje incluido" de HTML para Emmet
+vim.cmd[[
+  autocmd FileType blade let b:coc_root_patterns = ['.git', '.env', 'composer.json']
+]]
+
+-- Configurar includeLanguages para Emmet (tratar Blade como HTML)
+vim.api.nvim_set_var('coc_user_config', {
+  emmet = {
+    includeLanguages = {
+      blade = "html"
+    }
+  }
+})
+
+
+
+
+
+
+
+vim.api.nvim_create_autocmd("BufRead", {
+  pattern = "*.blade.php",
+  callback = function()
+    vim.bo.filetype = "blade"
+  end
+})
+
+vim.g.coc_global_extensions = {
+  'coc-tsserver',
+  'coc-css',
+  'coc-html',
+  'coc-phpls',
+  'coc-blade',
+  '@yaegassy/coc-laravel',
+}
+
+-- Activar CoC solo para Blade
+vim.api.nvim_create_autocmd({"BufEnter", "FileType"}, {
+  pattern = "blade",
+  callback = function()
+    vim.cmd("CocEnable")
+    vim.cmd("CocStart")
+    print("CoC activado para Blade")
+  end
+})
+
+-- Desactivar CoC para otros tipos de archivos
+vim.api.nvim_create_autocmd({"BufEnter", "FileType"}, {
+  pattern = {"php", "lua", "javascript", "typescript", "css", "html", "cpp", "c"},
+  callback = function()
+    vim.cmd("CocDisable")
+  end
+})

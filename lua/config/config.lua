@@ -29,7 +29,7 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 
 -- Habilitar transparencia
-vim.g.transparent_enabled = true
+-- vim.g.transparent_enabled = true
 
 -- tecla de lider
 vim.g.mapleader = ","

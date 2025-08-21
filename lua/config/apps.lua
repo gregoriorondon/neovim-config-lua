@@ -26,9 +26,38 @@ require("lazy").setup({
 		build = "npm ci",
 		config = function()
 			vim.cmd([[
-        inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>"
-      ]])
+	       inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>"
+	     ]])
 		end,
+	},
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"mason-org/mason-lspconfig.nvim",
+			"hrsh7th/nvim-cmp",
+			"hrsh7th/cmp-nvim-lsp",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+		},
+		config = function()
+			require("config.lsp")
+		end,
+	},
+	{
+		"mason-org/mason.nvim",
+		cmd = "Mason",
+		opts = {
+			ensure_installed = {
+				"phpactor",
+				"intelephense",
+				"lua_ls",
+				"cssls",
+				"emmet_language_server",
+				"emmet_ls",
+				"html",
+				"stylua",
+			},
+		},
 	},
 	-- ==========================
 	-- ======PROGRAMACIÓN========
@@ -47,7 +76,7 @@ require("lazy").setup({
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
-				php = { "pretty-php" },
+				php = { "pint" },
 				blade = { "blade-formatter" },
 				javascript = { "prettierd" },
 				css = { "prettierd" },

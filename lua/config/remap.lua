@@ -16,3 +16,7 @@ vim.keymap.set("n", "<C-n>", "<Cmd>Neotree toggle<CR>", { silent = true, noremap
 
 -- Abrir/Cerrar neotree
 vim.keymap.set("n", "<C-f>", "<Cmd>lua require('conform').format()<CR>", { silent = true, noremap = true })
+
+-- Moverse entre pestañas
+vim.keymap.set("n", "<A-Right>", "<Cmd>BufferLineCycleNext<CR>" )
+vim.keymap.set("n", "<A-Left>", "<Cmd>BufferLineCyclePrev<CR>" )
