@@ -1,0 +1,36 @@
+    -- cmd = { "node",
+    --     "/usr/local/lib/node_modules/vscode-langservers-extracted/lib/html-language-server/node/htmlServerMain.js",
+    --     "--stdio" },
+    -- filetypes = { "html", "templ" },
+    --
+    -- capabilities = {
+    --     completion = {
+    --         completionItem = {
+    --             documentation = true,
+    --             snippetSupport = true,
+    --             -- Habilita el autodisparo del LSP para los caracteres HTML comunes
+    --             triggerCharacters = { '<', '/', '-', ':', '.' },
+    --         },
+    --     },
+    -- },
+--     local lspconfig = require("lspconfig")
+--
+-- -- Habilitar soporte de snippets para autocompletado
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+--
+-- -- Configuración del servidor HTML (vscode-html-language-server)
+-- lspconfig.html.setup({
+--   cmd = { "vscode-html-language-server", "--stdio" },
+--   filetypes = { "html", "blade" },
+--   init_options = {
+--     configurationSection = { "html", "css", "javascript" },
+--     embeddedLanguages = {
+--       css = true,
+--       javascript = true,
+--     },
+--     provideFormatter = true, -- permite el formateo desde el servidor
+--   },
+--   capabilities = capabilities,
+--   root_dir = lspconfig.util.root_pattern("package.json", ".git"), -- raíz del proyecto
+-- })

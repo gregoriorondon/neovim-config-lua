@@ -38,12 +38,14 @@ vim.g.mapleader = ","
 vim.cmd [[set mouse=a]]
 
 -- Resaltado de sintaxis para blade
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
-  pattern = "*.blade.php",
-  command = "set filetype=blade"
-})
+-- vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+--   pattern = "*.blade.php",
+--   command = "set filetype=blade"
+-- })
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
+
+vim.opt.redrawtime = 10000
 
 
