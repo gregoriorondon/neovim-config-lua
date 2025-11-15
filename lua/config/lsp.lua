@@ -5,6 +5,7 @@ vim.lsp.enable('emmet_ls')
 vim.lsp.enable('intelephense_ls')
 vim.lsp.enable('tailwindcss_ls')
 vim.lsp.enable('lua_ls')
+vim.lsp.enable('ts_ls')
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
